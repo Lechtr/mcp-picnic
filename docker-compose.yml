@@ -1,14 +1,10 @@
 services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - ./src:/app/src
-      - ./bin:/app/bin
-    command: npm run dev
+  picnic-mcp:
+    build: .
+    restart: unless-stopped
+    environment:
+      PICNIC_USERNAME: ${PICNIC_USERNAME}
+      PICNIC_PASSWORD: ${PICNIC_PASSWORD}
+      PICNIC_COUNTRY_CODE: ${PICNIC_COUNTRY_CODE:-DE}
     ports:
       - "3000:3000"
-    env_file:
-      - .env
-version: "3.8"
