@@ -20,8 +20,8 @@ services:
       - ./Caddyfile:/etc/caddy/Caddyfile:ro
     depends_on:
       - picnic-mcp
-    ports:
-      - "8080:80"
+    expose:
+      - "80"
 
 volumes:
   picnic-session:
