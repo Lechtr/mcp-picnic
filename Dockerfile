@@ -7,4 +7,4 @@ ENV PICNIC_COUNTRY_CODE=DE
 
 EXPOSE 3000
 
-CMD ["sh", "-c", "npm install -g mcp-picnic@latest && mcp-picnic --enable-http --http-port 3000"]
+CMD ["sh", "-c", "npx -y mcp-picnic@latest --enable-http --http-port 3000"]
