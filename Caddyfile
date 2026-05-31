@@ -1,0 +1,7 @@
+:80 {
+  handle_path /{$MCP_SECRET_PATH}/* {
+    reverse_proxy picnic-mcp:3000
+  }
+
+  respond "Not found" 404
+}
