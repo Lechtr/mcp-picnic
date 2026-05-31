@@ -1,6 +1,8 @@
 services:
   picnic-mcp:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: unless-stopped
     environment:
       PICNIC_USERNAME: ${PICNIC_USERNAME}
@@ -12,12 +14,12 @@ services:
       - "3000"
 
   mcp-gateway:
-    image: caddy:2-alpine
+    build:
+      context: .
+      dockerfile: Caddy.Dockerfile
     restart: unless-stopped
     environment:
       MCP_SECRET_PATH: ${MCP_SECRET_PATH}
-    volumes:
-      - ./Caddyfile:/etc/caddy/Caddyfile:ro
     depends_on:
       - picnic-mcp
     expose:
